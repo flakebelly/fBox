@@ -4,207 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fTape - fBox Audio</title>
-    <meta name="description" content="<span class="f">f</span>Tape - Multi-Mode Tape Machine. Part of the fBox virtual analogue studio ecosystem by flakebelly.">
+    <meta name="description" content="fTape - Multi-Mode Tape Machine. Part of the fBox virtual analogue studio ecosystem by flakebelly.">
     <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #0E0E0E;
-            --bg-panel: #1A1917;
-            --bg-strip: #242320;
-            --bg-card: #2A2926;
-            --border-subtle: #3A3835;
-            --border-accent: #4A4640;
-            --gold: #C4A265;
-            --gold-bright: #D4B87A;
-            --gold-dim: #9A7E4E;
-            --cream: #F0E4CF;
-            --cream-dim: #B8AE9A;
-            --cream-faint: #8A8276;
-            --accent: #C49650;
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
-            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+            --bg-deep:#0E0E0E;--bg-panel:#1A1917;--bg-strip:#242320;--bg-card:#2A2926;
+            --border-subtle:#3A3835;--border-accent:#4A4640;
+            --gold:#C4A265;--gold-bright:#D4B87A;--gold-dim:#9A7E4E;
+            --cream:#F0E4CF;--cream-dim:#B8AE9A;--cream-faint:#8A8276;
+            --accent:#C49650;
+            --font-display:'Playfair Display',Georgia,serif;
+            --font-body:'Source Sans 3','Segoe UI',sans-serif;
+            --font-mono:'JetBrains Mono','Consolas',monospace;
         }
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--border-accent) var(--bg-deep); }
-        body {
-            font-family: var(--font-body);
-            background: var(--bg-deep);
-            color: var(--cream-dim);
-            line-height: 1.7;
-            font-weight: 300;
-            -webkit-font-smoothing: antialiased;
-        }
-        body::before {
-            content:''; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.025;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            background-size: 256px 256px;
-        }
-        ::selection { background:var(--gold-dim); color:var(--bg-deep); }
-        a { color:var(--gold); text-decoration:none; transition:color 0.3s; }
-        a:hover { color:var(--gold-bright); }
-        img { max-width:100%; display:block; }
-
-        /* NAV */
-        nav {
-            position:fixed; top:0; left:0; right:0; z-index:100; padding:0.8rem 0;
-            background:rgba(14,14,14,0.9); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-            border-bottom:1px solid var(--border-subtle);
-        }
-        nav .container { display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:0 2rem; }
-        .nav-logo { display:flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:1.35rem; color:var(--cream); letter-spacing:0.02em; }
-        .nav-logo img { width:36px; height:36px; border-radius:6px; }
-        .nav-logo .f { color:var(--gold); }
-        .nav-back { font-size:0.85rem; font-weight:400; color:var(--cream-faint); text-transform:uppercase; letter-spacing:0.12em; }
-        .nav-back:hover { color:var(--gold); }
-
-        /* HERO */
-        .plugin-hero {
-            padding: 8rem 0 4rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-subtle);
-            background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(196,162,101,0.03) 0%, transparent 70%);
-        }
-        .plugin-hero h1 {
-            font-family:var(--font-display); font-size:clamp(2.2rem,5vw,3.8rem); font-weight:400;
-            color:var(--cream); letter-spacing:0.04em; margin-bottom:0.3em;
-        }
-        .plugin-hero h1 .f { color:var(--accent); }
-        .plugin-hero .subtitle {
-            font-family:var(--font-display); font-style:italic; font-size:clamp(1rem,2.2vw,1.3rem);
-            color:var(--cream-faint); margin-bottom:0.8rem;
-        }
-        .plugin-hero .plugin-type {
-            font-family:var(--font-mono); font-size:0.75rem; color:var(--gold-dim);
-            text-transform:uppercase; letter-spacing:0.15em;
-        }
-
-        /* CONTAINER */
-        .container { max-width:1200px; margin:0 auto; padding:0 2rem; }
-        .section { padding:4rem 0; }
-
-        /* MODE TAGS */
-        .mode-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:0.4rem; margin-top:1.5rem; }
-        .mode-tag {
-            font-family:var(--font-mono); font-size:0.7rem; padding:0.3rem 0.7rem;
-            background:var(--bg-strip); border:1px solid var(--border-accent); border-radius:3px; color:var(--cream-faint);
-        }
-
-        /* DESCRIPTION */
-        .description {
-            max-width:800px; margin:0 auto; padding:3rem 0;
-            font-size:1.05rem; line-height:1.8;
-        }
-        .description p { margin-bottom:1.2rem; }
-        .description .highlight { color:var(--cream); font-weight:400; }
-
-        /* SCREENSHOTS */
-        .screenshots {
-            display:grid; grid-template-columns:1fr; gap:2rem;
-            padding:2rem 0 3rem;
-        }
-        .screenshot {
-            background:var(--bg-panel); border:1px solid var(--border-subtle); border-radius:6px;
-            overflow:hidden; transition:border-color 0.3s;
-        }
-        .screenshot:hover { border-color:var(--border-accent); }
-        .screenshot img { width:100%; display:block; }
-        .screenshot figcaption {
-            font-family:var(--font-mono); font-size:0.72rem; color:var(--cream-faint);
-            padding:0.8rem 1.2rem; text-align:center; letter-spacing:0.05em;
-        }
-
-        /* FEATURES */
-        .features-grid {
-            display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:1.2rem;
-            padding:2rem 0;
-        }
-        .feature-card {
-            padding:1.5rem; background:var(--bg-panel); border:1px solid var(--border-subtle);
-            border-radius:4px;
-        }
-        .feature-card h3 {
-            font-family:var(--font-body); font-size:0.85rem; font-weight:600;
-            text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.6rem;
-        }
-        .feature-card p { font-size:0.9rem; line-height:1.6; }
-
-        /* SIGNAL FLOW */
-        .signal-flow {
-            background:var(--bg-panel); border:1px solid var(--border-subtle); border-radius:4px;
-            padding:1.5rem 2rem; margin:2rem 0; text-align:center;
-        }
-        .signal-flow h3 {
-            font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase;
-            letter-spacing:0.15em; color:var(--gold-dim); margin-bottom:1rem;
-        }
-        .signal-chain { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:0.4rem; }
-        .signal-stage {
-            font-family:var(--font-mono); font-size:0.7rem; padding:0.4rem 0.7rem;
-            background:var(--bg-strip); border:1px solid var(--border-accent); border-radius:3px;
-            color:var(--cream-dim); white-space:nowrap;
-        }
-        .signal-arrow { color:var(--gold-dim); font-size:0.7rem; }
-
-        /* DIVIDER */
-        .section-divider { width:60px; height:1px; background:var(--gold-dim); margin:0 auto 2rem; }
-
-        /* FOOTER */
-        footer { padding:4rem 0 2.5rem; text-align:center; border-top:1px solid var(--border-subtle); }
-        .footer-brand { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cream-faint); margin-bottom:0.6rem; }
-        .footer-email { font-family:var(--font-mono); font-size:0.78rem; color:var(--cream-faint); margin-bottom:1.2rem; }
-        .footer-email a { color:var(--gold-dim); }
-        .footer-links { display:flex; justify-content:center; gap:2rem; margin-bottom:2rem; }
-        .footer-links a { font-size:0.82rem; color:var(--cream-faint); }
-        .footer-legal { font-size:0.72rem; color:var(--cream-faint); opacity:0.5; }
-
-        /* RESPONSIVE */
-        @media (max-width:640px) {
-            .container { padding:0 1.25rem; }
-            .section { padding:3rem 0; }
-            .features-grid { grid-template-columns:1fr; }
-            .signal-chain { flex-direction:column; }
-            .signal-arrow { transform:rotate(90deg); }
-        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--border-accent) var(--bg-deep)}
+        body{font-family:var(--font-body);background:var(--bg-deep);color:var(--cream-dim);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
+        body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px 256px}
+        ::selection{background:var(--gold-dim);color:var(--bg-deep)}
+        a{color:var(--gold);text-decoration:none;transition:color 0.3s}
+        a:hover{color:var(--gold-bright)}
+        img{max-width:100%;display:block}
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.8rem 0;background:rgba(14,14,14,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle)}
+        nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 2rem}
+        .nav-logo{display:flex;align-items:center;gap:0.75rem;font-family:var(--font-display);font-size:1.35rem;color:var(--cream);letter-spacing:0.02em}
+        .nav-logo img{width:36px;height:36px;border-radius:6px}
+        .nav-logo .f{color:var(--gold)}
+        .nav-back{font-size:0.85rem;font-weight:400;color:var(--cream-faint);text-transform:uppercase;letter-spacing:0.12em}
+        .nav-back:hover{color:var(--gold)}
+        .plugin-hero{padding:8rem 0 4rem;text-align:center;border-bottom:1px solid var(--border-subtle);background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(196,162,101,0.03) 0%,transparent 70%)}
+        .plugin-hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;color:var(--cream);letter-spacing:0.04em;margin-bottom:0.3em}
+        .plugin-hero h1 .f{color:var(--accent)}
+        .plugin-hero .subtitle{font-family:var(--font-display);font-style:italic;font-size:clamp(1rem,2.2vw,1.3rem);color:var(--cream-faint);margin-bottom:0.8rem}
+        .plugin-hero .plugin-type{font-family:var(--font-mono);font-size:0.75rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:0.15em}
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        .section{padding:4rem 0}
+        .mode-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0.4rem;margin-top:1.5rem}
+        .mode-tag{font-family:var(--font-mono);font-size:0.7rem;padding:0.3rem 0.7rem;background:var(--bg-strip);border:1px solid var(--border-accent);border-radius:3px;color:var(--cream-faint)}
+        .description{max-width:800px;margin:0 auto;padding:3rem 0;font-size:1.05rem;line-height:1.8}
+        .description p{margin-bottom:1.2rem}
+        .description .highlight{color:var(--cream);font-weight:400}
+        .screenshots{display:grid;grid-template-columns:1fr;gap:2rem;padding:2rem 0 3rem}
+        .screenshot{background:var(--bg-panel);border:1px solid var(--border-subtle);border-radius:6px;overflow:hidden;transition:border-color 0.3s}
+        .screenshot:hover{border-color:var(--border-accent)}
+        .screenshot img{width:100%;display:block}
+        .screenshot figcaption{font-family:var(--font-mono);font-size:0.72rem;color:var(--cream-faint);padding:0.8rem 1.2rem;text-align:center;letter-spacing:0.05em}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;padding:2rem 0}
+        .feature-card{padding:1.5rem;background:var(--bg-panel);border:1px solid var(--border-subtle);border-radius:4px}
+        .feature-card h3{font-family:var(--font-body);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:0.6rem}
+        .feature-card p{font-size:0.9rem;line-height:1.6}
+        .section-divider{width:60px;height:1px;background:var(--gold-dim);margin:0 auto 2rem}
+        footer{padding:4rem 0 2.5rem;text-align:center;border-top:1px solid var(--border-subtle)}
+        .footer-brand{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-faint);margin-bottom:0.6rem}
+        .footer-email{font-family:var(--font-mono);font-size:0.78rem;color:var(--cream-faint);margin-bottom:1.2rem}
+        .footer-email a{color:var(--gold-dim)}
+        .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem}
+        .footer-links a{font-size:0.82rem;color:var(--cream-faint)}
+        .footer-legal{font-size:0.72rem;color:var(--cream-faint);opacity:0.5}
+        @media(max-width:640px){.container{padding:0 1.25rem}.section{padding:3rem 0}.features-grid{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <a href="../" class="nav-logo">
-                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
-                <span><span class="f">f</span>Box</span>
-            </a>
-            <a href="../" class="nav-back">&larr; Back to home</a>
-        </div>
-    </nav>
-
-    <section class="plugin-hero">
-        <div class="container">
-            <h1><span class="f">f</span>Tape</h1>
-            <p class="subtitle">Multi-Mode Tape Machine</p>
-            <p class="plugin-type">Six Tape Emulations - VST3 / AU</p>
-            <div class="mode-tags"><span class="mode-tag">Home Deck</span><span class="mode-tag">Cassette</span><span class="mode-tag">Multitrack</span><span class="mode-tag">Broadcast</span><span class="mode-tag">Studio 2"</span><span class="mode-tag">Heritage</span></div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="description">
-                
-        <p>fTape is a multi-mode mono/stereo tape machine emulation. It models the sound and behaviour of analogue tape recording - the saturation, the frequency response, the noise, the wow and flutter, the physical transport mechanisms - across six distinct modes spanning the full history of magnetic recording.</p>
-        <p>Build 1.0 includes Home Deck (lo-fi 1970s consumer reel-to-reel), Cassette (compact cassette with three tape formulations and Dolby NR), Multitrack (8-track with dbx noise reduction and crosstalk), Broadcast (professional broadcast reel-to-reel), Studio 2" (professional 2-inch multitrack), and Heritage (vintage mastering deck).</p>
-        <p><span class="highlight">Each mode has its own animated visual - spinning reels, moving tape heads, cassette mechanisms - and its own set of controls matching the real hardware.</span> Every instance generates a unique serial number that seeds subtle hardware tolerances across the tape path. No two instances sound exactly alike.</p>
-    
-            </div>
-
-            
-
-            <div class="screenshots">
-                
+    <nav><div class="container">
+        <a href="../" class="nav-logo"><img src="../assets/fbox_logo.png" alt="fBox" loading="lazy"><span><span class="f">f</span>Box</span></a>
+        <a href="../" class="nav-back">&larr; Back to home</a>
+    </div></nav>
+    <section class="plugin-hero"><div class="container">
+        <h1><span class="f">f</span>Tape</h1>
+        <p class="subtitle">Multi-Mode Tape Machine</p>
+        <p class="plugin-type">Six Tape Emulations - VST3 / AU</p>
+        <div class="mode-tags"><span class="mode-tag">Home Deck</span><span class="mode-tag">Cassette</span><span class="mode-tag">Multitrack</span><span class="mode-tag">Broadcast</span><span class="mode-tag">Studio 2"</span><span class="mode-tag">Heritage</span></div>
+    </div></section>
+    <section class="section"><div class="container">
+        <div class="description"><p>fTape is a multi-mode mono/stereo tape machine emulation. It models the sound and behaviour of analogue tape recording - the saturation, the frequency response, the noise, the wow and flutter, the physical transport mechanisms - across six distinct modes spanning the full history of magnetic recording.</p>
+    <p>The six modes are Home Deck (lo-fi 1970s consumer reel-to-reel), Cassette (compact cassette with three tape formulations and Dolby NR), Multitrack (8-track with dbx noise reduction and crosstalk), Broadcast (professional broadcast reel-to-reel), Studio 2" (professional 2-inch multitrack), and Heritage (vintage mastering deck).</p>
+    <p><span class="highlight">Each mode has its own animated visual - spinning reels, moving tape heads, cassette mechanisms - and its own set of controls matching the real hardware.</span> Every instance generates a unique serial number that seeds subtle hardware tolerances across the tape path. No two instances sound exactly alike.</p></div>
+        <div class="screenshots">
             <figure class="screenshot">
                 <img src="../assets/screenshots/ftape_studio.png" alt="fTape - Studio 2" mode with reel-to-reel transport" loading="lazy">
                 <figcaption>fTape - Studio 2" mode with reel-to-reel transport</figcaption>
@@ -212,26 +90,17 @@
             <figure class="screenshot">
                 <img src="../assets/screenshots/ftape_cassette.png" alt="fTape - Cassette mode with compact cassette visual" loading="lazy">
                 <figcaption>fTape - Cassette mode with compact cassette visual</figcaption>
-            </figure>
-            </div>
-
-            
-        <div class="section-divider"></div>
-        <div class="features-grid">
-            <div class="feature-card"><h3>Six Tape Formats</h3><p>Home Deck, Cassette, Multitrack, Broadcast, Studio 2", and Heritage - each with its own DSP engine and animated transport visual.</p></div>
-            <div class="feature-card"><h3>Tape Controls</h3><p>Speed, Rec Level, Bias, HF Trim, Noise, Wow/Flutter, Age, EQ Curve (NAB/IEC/CCIR), and Mix. Cassette adds Tape Type and Dolby NR.</p></div>
-            <div class="feature-card"><h3>Three Quality Tiers</h3><p>Eco for tracking, Studio with ADAA antialiasing on record head saturation, Master with ADAA plus oversampling for maximum fidelity.</p></div>
-            <div class="feature-card"><h3>Animated Transport</h3><p>Each mode features animated reel transport, spinning reels, tape head indicators, and mode-specific visuals that respond to playback.</p></div>
-        </div>
-    
-        </div>
-    </section>
-
+            </figure></div>
+        <div class="section-divider"></div><div class="features-grid"><div class="feature-card"><h3>Six Tape Formats</h3><p>Home Deck, Cassette, Multitrack, Broadcast, Studio 2", and Heritage - each with its own DSP engine and animated transport visual.</p></div><div class="feature-card"><h3>Tape Controls</h3><p>Speed, Rec Level, Bias, HF Trim, Noise, Wow/Flutter, Age, EQ Curve (NAB/IEC/CCIR), and Mix. Cassette adds Tape Type and Dolby NR.</p></div><div class="feature-card"><h3>Three Quality Tiers</h3><p>Eco for tracking, Studio with ADAA antialiasing on record head saturation, Master with ADAA plus oversampling for maximum fidelity.</p></div><div class="feature-card"><h3>Animated Transport</h3><p>Each mode features animated reel transport, spinning reels, tape head indicators, and mode-specific visuals that respond to playback.</p></div></div>
+    </div></section>
     <footer>
         <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
-        <p class="footer-email"><a href="/cdn-cgi/l/email-protection#f69f989099b69094998e9783929f99d895999b"><span class="__cf_email__" data-cfemail="7a13141c153a1c1815021b0f1e131554191517">[email&#160;protected]</span></a></p>
+        <p class="footer-email"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a></p>
         <div class="footer-links">
             <a href="../">Back to home</a>
             <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly.com</a>
         </div>
-        <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noop
+        <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+</body>
+</html>
