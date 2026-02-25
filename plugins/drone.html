@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fDrone - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Drone</h1>
+            <div class="plugin-type">Drone Synthesiser and Signal Mangler - VST3 / AU</div>
+            <p class="plugin-tagline">Not designed to be pristine or controllable. Designed to be alive.</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fDrone is a drone synthesiser, audio processor, and signal mangler. It generates continuous evolving tones, processes incoming audio through a chain of analogue-modelled damage and character effects, or ring-modulates your signal with its internal oscillator. It also responds to MIDI, turning it into a playable instrument.</p>
+    <p>Every instance of fDrone is a unique piece of virtual hardware. When you load it, it generates a unique serial number that determines the character of that particular unit - the way its oscillators drift, how its motor wobbles, the colour of its noise floor, the resonance of its feedback path. <span class="highlight">Same serial, same unit. Different serial, different character. Just like pulling two units off a factory shelf.</span></p>
+
+    <h2>Four Ways to Use It</h2>
+    <div class="mode-grid">
+        <div class="mode-card"><h3>Drone</h3><p>Pure drone generation. Press Generate and the oscillators produce continuous, evolving tones from the internal engine. Your blank canvas.</p></div>
+        <div class="mode-card"><h3>Mix</h3><p>Blends the generated drone with incoming audio. Both signals pass through the full damage and character chain together. Add texture and unpredictability to existing recordings.</p></div>
+        <div class="mode-card"><h3>Ring</h3><p>Ring modulation. The drone's oscillator is multiplied with your incoming audio, creating inharmonic, metallic, bell-like tones. Extraordinary for mangling vocals, guitars, or anything you want to make unrecognisable.</p></div>
+        <div class="mode-card"><h3>MIDI Instrument</h3><p>Load on an instrument track and play the drone from a keyboard. Each note sets the base frequency. The drone becomes a playable, evolving instrument.</p></div>
+    </div>
+
+    <h2>Dual Oscillators</h2>
+    <p>The oscillators are not mathematically perfect - they are modelled on real analogue oscillator circuits with subtle harmonic richness and per-unit character. On startup, they take a moment to settle, just as real analogue oscillators need time to warm up and stabilise.</p>
+    <p>Oscillator A is the main tone generator. Oscillator B adds up to 5 additional layers that can be detuned, harmonically related, and cross-modulated to create rich, complex timbres from simple beginnings. Cascaded FM between layers means each voice subtly bends the next, creating evolving spectral movement that is never quite the same twice.</p>
+
+    <h2>Damage Chain</h2>
+    <p>Saturation, feedback with a resonant bandpass whose centre frequency is derived from the unit's serial number, bit-crushing, sample rate degradation, dropouts, and glitch effects. The aliasing on the lo-fi effects is intentional - it is the desired sound.</p>
+
+    <h2>Character Chain</h2>
+    <p>Drift and wander add slow pitch and timbral movement. Speed controls varispeed tape-style pitch shifting. The tape emulation section models motor wobble (separate wow and flutter LFOs), head bump (resonant low shelf tracking tape speed), and print-through (circular delay buffer modelling magnetic bleed between tape layers). Voltage sag models a power supply under load - the output level feeds back to gently droop pitch and compress amplitude. Age adds crackle and intermittent contact noise. Freeze captures and loops a moment of the drone with an equal-power crossfade on release.</p>
+
+    <h2>Memory</h2>
+    <p>The Memory knob degrades patch recall. At 0, patches load perfectly. Turn it up and loaded values become increasingly smudged and inaccurate - as if someone scribbled settings on a patch sheet, left it in a damp studio for six months, and tried to read it back. Share a patch at Memory 5 and every collaborator's unit interprets it slightly differently.</p>
+
+    <h2>Philosophy</h2>
+    <p><span class="highlight">fDrone is not designed to be pristine or controllable. It is designed to be alive.</span></p>
+    <p>Real analogue equipment drifts, hums, distorts, and decays. It responds to temperature, age, and the signal passing through it. No two units sound the same. Patch sheets get coffee-stained. Tape heads magnetise. Motors wobble. Capacitors leak. fDrone models all of this because these imperfections are not flaws - they are character.</p>
+    <p><span class="highlight">Every fDrone is a unique instrument. Learn yours.</span></p>
+
+    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by flakebelly</div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 flakebelly. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>

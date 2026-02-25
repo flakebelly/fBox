@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fDelay - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Delay</h1>
+            <div class="plugin-type">Multi-Mode Delay - VST3 / AU</div>
+            <p class="plugin-tagline">Eight delay modes with switchable GUI per mode</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fDelay provides eight delay modes covering tape echo, digital, analogue bucket-brigade, ping-pong, and more. Each mode has its own DSP engine, its own GUI, and its own sonic character. Like all fBox multi-mode plugins, a single mode switch changes both the sound and the interface.</p>
+
+    <div class="plugin-placeholder"><p>Full mode details, screenshots, and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by flakebelly</div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 flakebelly. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fMod - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Mod</h1>
+            <div class="plugin-type">Multi-Mode Modulation Processor - VST3 / AU</div>
+            <p class="plugin-tagline">Eight classic modulation circuits</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fMod provides eight modulation engines covering every classic modulation effect - from lush bucket-brigade chorus to through-zero flanging to dual-rotor Leslie emulation. Each mode has its own DSP engine, GUI layout, and per-instance hardware tolerances. Tempo sync is available on six modes.</p>
+
+    <h2>Modes</h2>
+    <div class="mode-grid">
+        <div class="mode-card"><h3>Chorus</h3><p>BBD bucket-brigade with compandor noise reduction. 1-3 voices with even phase spread.</p></div>
+        <div class="mode-card"><h3>Flanger</h3><p>Through-zero capable with signed feedback from -95% to +95%. Deep, metallic sweeps.</p></div>
+        <div class="mode-card"><h3>Phaser</h3><p>Cascaded all-pass with JFET sweep. 4, 6, 8, or 12 stages.</p></div>
+        <div class="mode-card"><h3>Tremolo</h3><p>Bias tube and optical photocell sub-modes. Stereo width control and sidechain input.</p></div>
+        <div class="mode-card"><h3>Vibrato</h3><p>BBD pitch modulation with rise envelope and latch for mechanical pitch effects.</p></div>
+        <div class="mode-card"><h3>Rotary</h3><p>Dual-rotor Leslie with independent horn and drum speeds, Doppler effect, and cabinet EQ.</p></div>
+        <div class="mode-card"><h3>Ring Mod</h3><p>4-diode germanium ring modulator with polyBLEP carrier. Sidechain replaces carrier.</p></div>
+        <div class="mode-card"><h3>Univibe</h3><p>Photocell 4-stage phaser with incandescent lamp model and transistor drive.</p></div>
+    </div>
+
+    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by flakebelly</div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 flakebelly. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>

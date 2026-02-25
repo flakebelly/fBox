@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fPre - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Pre</h1>
+            <div class="plugin-type">Multi-Mode Preamplifier - VST3 / AU</div>
+            <p class="plugin-tagline">Six preamplifier topologies from one plugin</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fPre provides six distinct preamplifier circuits, each modelling a different amplification topology. From Class-A transformer warmth to ultra-transparent discrete solid-state, each mode is a complete preamp with its own gain staging, harmonic character, and transient response.</p>
+
+    <h2>Modes</h2>
+    <div class="mode-grid">
+        <div class="mode-card"><h3>British</h3><p>Class-A discrete transformer-coupled preamp with inductor EQ.</p></div>
+        <div class="mode-card"><h3>American</h3><p>FET solid-state discrete preamp with 3:1 output transformer tap. Pure preamp, no EQ.</p></div>
+        <div class="mode-card"><h3>Tube</h3><p>All-tube pentode preamp with push-pull output and hot bias. Pure preamp, no EQ.</p></div>
+        <div class="mode-card"><h3>Clean</h3><p>Ultra-transparent discrete Class-A solid-state. No transformers, capacitor-coupled I/O, switchable impedance.</p></div>
+        <div class="mode-card"><h3>Germanium</h3><p>Vintage PNP germanium transistor preamp. Transformer-balanced I/O, temperature drift, even-harmonic warmth.</p></div>
+        <div class="mode-card"><h3>Console</h3><p>IC op-amp mixing console channel strip. Switchable iron input transformer, slew-rate limiting, feedback-loop saturation.</p></div>
+    </div>
+
+    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by flakebelly</div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 flakebelly. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>
