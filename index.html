@@ -162,11 +162,15 @@
         <img src="assets/fbox_logo.png" alt="fBox" class="footer-logo">
         <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
         <p class="footer-location">From the Outer Hebrides of Scotland</p>
-        <div class="footer-links"><a href="/cdn-cgi/l/email-protection#dfb6b1b9b09fb9bdb0a7beaabbb6b0f1bcb0b2"><span class="__cf_email__" data-cfemail="177e797178577175786f7662737e783974787a">[email&#160;protected]</span></a><a href="#top">Back to top</a></div>
+        <div class="footer-links"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a><a href="#top">Back to top</a></div>
         <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
     </footer>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
         document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
         document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
-        const observer=new IntersectionObserver((entries)=>{entries.
+        const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>
