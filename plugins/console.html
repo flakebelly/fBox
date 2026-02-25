@@ -42,8 +42,6 @@
         .plugin-hero .plugin-type{font-family:var(--font-mono);font-size:0.75rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:0.15em}
         .container{max-width:1200px;margin:0 auto;padding:0 2rem}
         .section{padding:4rem 0}
-        .mode-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0.4rem;margin-top:1.5rem}
-        .mode-tag{font-family:var(--font-mono);font-size:0.7rem;padding:0.3rem 0.7rem;background:var(--bg-strip);border:1px solid var(--border-accent);border-radius:3px;color:var(--cream-faint)}
         .description{max-width:800px;margin:0 auto;padding:3rem 0;font-size:1.05rem;line-height:1.8}
         .description p{margin-bottom:1.2rem}
         .description .highlight{color:var(--cream);font-weight:400}
@@ -76,16 +74,17 @@
         <h1><span class="f">f</span>Box Console</h1>
         <p class="subtitle">Virtual Analogue Mixing Console</p>
         <p class="plugin-type">32-Channel Mixing Console - VST3 / AU / Standalone</p>
-        
     </div></section>
     <section class="section"><div class="container">
-        <div class="description"><p>fBox Console is a virtual analogue mixing console available as a VST3 / AU plugin and as a standalone desktop application. It provides up to 32 mono channel strips, 8 group buses, 2 stereo aux sends with returns, and a stereo master section - all in a single window.</p>
-    <p>It is not a collection of unrelated processors. It is one integrated desk. <span class="highlight">Levels, routing, and gain staging are part of the sound, not an afterthought.</span> The console's non-linear summing stages respond to cumulative signal level, producing density and glue as the mix fills out, just as a real analogue desk does.</p>
-    <p>Every channel strip includes a switchable preamp with four modes, 8 hosted insert slots for fBox VST3 plugins, a single-knob channel compressor, a 4-band vintage-style EQ, 2 aux sends, pan, mute, solo, and a fader. All parameters are automatable through the console's own built-in multi-pass automation engine or via DAW automation.</p>
-    <p>The 8 group buses each feature a 3-band EQ with high-pass filter, a VCA bus compressor, 4 insert slots, and dual pan controls. The master section adds an analogue summing amplifier, a vari-mu compressor, a diode limiter, and its own 3-band EQ with HPF and 4 insert slots.</p>
-    <p>The console includes a <span class="highlight">16-track Tape Machine</span> - a multitrack tape simulation modelled on a classic recorder, integrated directly into the console signal path.</p>
-    <p>The console features <span class="highlight">automatic stereo linking</span> - load a stereo file onto a channel and it automatically pairs with the adjacent channel, hard-panning each side and sharing controls between them. Insert slots can also be linked between two channels for true stereo processing through your plugins.</p>
-    <p>Every instance of fBox Console generates a unique serial number that seeds subtle hardware tolerances across the buses and master section. No two instances sound exactly alike.</p></div>
+        <div class="description">
+            <p>fBox Console is a virtual analogue mixing console available as a VST3 / AU plugin and as a standalone desktop application. It provides up to 32 mono channel strips, 8 group buses, 2 stereo aux sends with returns, and a stereo master section - all in a single window.</p>
+            <p>It is not a collection of unrelated processors. It is one integrated desk. <span class="highlight">Levels, routing, and gain staging are part of the sound, not an afterthought.</span> The console's non-linear summing stages respond to cumulative signal level, producing density and glue as the mix fills out, just as a real analogue desk does.</p>
+            <p>Every channel strip includes a switchable preamp with four modes, 8 hosted insert slots for fBox VST3 plugins, a single-knob channel compressor, a 4-band vintage-style EQ, 2 aux sends, pan, mute, solo, and a fader. All parameters are automatable through the console's own built-in multi-pass automation engine or via DAW automation.</p>
+            <p>The 8 group buses each feature a 3-band EQ with high-pass filter, a VCA bus compressor, 4 insert slots, and dual pan controls. The master section adds an analogue summing amplifier, a vari-mu compressor, a diode limiter, and its own 3-band EQ with HPF and 4 insert slots.</p>
+            <p>The console includes a <span class="highlight">16-track Tape Machine</span> - a multitrack tape simulation modelled on a classic recorder, integrated directly into the console signal path.</p>
+            <p>The console features <span class="highlight">automatic stereo linking</span> - load a stereo file onto a channel and it automatically pairs with the adjacent channel, hard-panning each side and sharing controls between them. Insert slots can also be linked between two channels for true stereo processing through your plugins.</p>
+            <p>Every instance of fBox Console generates a unique serial number that seeds subtle hardware tolerances across the buses and master section. No two instances sound exactly alike.</p>
+        </div>
         <div class="screenshots">
             <figure class="screenshot">
                 <img src="../assets/screenshots/console_vst_1.png" alt="fBox Console VST - 16 channel overview" loading="lazy">
@@ -106,8 +105,17 @@
             <figure class="screenshot">
                 <img src="../assets/screenshots/console_standalone_2.png" alt="fBox Console Standalone - Tape Machine active" loading="lazy">
                 <figcaption>fBox Console Standalone - Tape Machine active</figcaption>
-            </figure></div>
-        <div class="section-divider"></div><div class="features-grid"><div class="feature-card"><h3>32 Channel Strips</h3><p>Each with switchable preamp (Clean, Warm, Hot, Valve), 8 hosted insert slots, channel compressor, 4-band EQ, 2 aux sends, pan, mute, solo, and fader.</p></div><div class="feature-card"><h3>8 Group Buses</h3><p>3-band EQ with HPF, VCA bus compressor, 4 insert slots, and dual pan controls. Route any channel to any bus for stem and group processing.</p></div><div class="feature-card"><h3>Master Section</h3><p>Analogue summing amplifier, vari-mu compressor, diode limiter, 3-band EQ with HPF, 4 insert slots, and stereo metering.</p></div><div class="feature-card"><h3>16-Pass Automation</h3><p>Built-in automation engine with touch recording. Record moves across multiple passes, with section-based workflow. Every parameter is automatable.</p></div><div class="feature-card"><h3>Tape Machine</h3><p>16-track multitrack tape simulation with per-track drive, EQ curves, output drive, and internal amp modelling. Integrated into the console signal path.</p></div><div class="feature-card"><h3>VST3 Insert Hosting</h3><p>Host fBox VST3 plugins in channel, bus, and master insert slots. Per-slot bypass, fault isolation, and full automation support.</p></div></div>
+            </figure>
+        </div>
+        <div class="section-divider"></div>
+        <div class="features-grid">
+            <div class="feature-card"><h3>32 Channel Strips</h3><p>Each with switchable preamp (Clean, Warm, Hot, Valve), 8 hosted insert slots, channel compressor, 4-band EQ, 2 aux sends, pan, mute, solo, and fader.</p></div>
+            <div class="feature-card"><h3>8 Group Buses</h3><p>3-band EQ with HPF, VCA bus compressor, 4 insert slots, and dual pan controls. Route any channel to any bus for stem and group processing.</p></div>
+            <div class="feature-card"><h3>Master Section</h3><p>Analogue summing amplifier, vari-mu compressor, diode limiter, 3-band EQ with HPF, 4 insert slots, and stereo metering.</p></div>
+            <div class="feature-card"><h3>Unlimited-Pass Automation</h3><p>Built-in automation engine with touch recording. Record moves across unlimited passes, with section-based workflow. Every parameter is automatable.</p></div>
+            <div class="feature-card"><h3>Tape Machine</h3><p>16-track multitrack tape simulation with per-track drive, EQ curves, output drive, and internal amp modelling. Integrated into the console signal path.</p></div>
+            <div class="feature-card"><h3>VST3 Insert Hosting</h3><p>Host fBox VST3 plugins in channel, bus, and master insert slots. Per-slot bypass, fault isolation, and full automation support.</p></div>
+        </div>
     </div></section>
     <footer>
         <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
