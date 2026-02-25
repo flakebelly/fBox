@@ -3,72 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fMod - fBox Virtual Analogue Studio</title>
+    <title><span class="f">f</span>Mod - fBox Audio</title>
+    <meta name="description" content="<span class="f">f</span>Mod - Multi-Mode Modulation. Part of the fBox virtual analogue studio ecosystem by flakebelly.">
     <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --bg-deep: #0E0E0E;
+            --bg-panel: #1A1917;
+            --bg-strip: #242320;
+            --bg-card: #2A2926;
+            --border-subtle: #3A3835;
+            --border-accent: #4A4640;
+            --gold: #C4A265;
+            --gold-bright: #D4B87A;
+            --gold-dim: #9A7E4E;
+            --cream: #F0E4CF;
+            --cream-dim: #B8AE9A;
+            --cream-faint: #8A8276;
+            --accent: #C4A265;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--border-accent) var(--bg-deep); }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deep);
+            color: var(--cream-dim);
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+        body::before {
+            content:''; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+        }
+        ::selection { background:var(--gold-dim); color:var(--bg-deep); }
+        a { color:var(--gold); text-decoration:none; transition:color 0.3s; }
+        a:hover { color:var(--gold-bright); }
+        img { max-width:100%; display:block; }
+
+        /* NAV */
+        nav {
+            position:fixed; top:0; left:0; right:0; z-index:100; padding:0.8rem 0;
+            background:rgba(14,14,14,0.9); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border-subtle);
+        }
+        nav .container { display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:0 2rem; }
+        .nav-logo { display:flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:1.35rem; color:var(--cream); letter-spacing:0.02em; }
+        .nav-logo img { width:36px; height:36px; border-radius:6px; }
+        .nav-logo .f { color:var(--gold); }
+        .nav-back { font-size:0.85rem; font-weight:400; color:var(--cream-faint); text-transform:uppercase; letter-spacing:0.12em; }
+        .nav-back:hover { color:var(--gold); }
+
+        /* HERO */
+        .plugin-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+            background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(196,162,101,0.03) 0%, transparent 70%);
+        }
+        .plugin-hero h1 {
+            font-family:var(--font-display); font-size:clamp(2.2rem,5vw,3.8rem); font-weight:400;
+            color:var(--cream); letter-spacing:0.04em; margin-bottom:0.3em;
+        }
+        .plugin-hero h1 .f { color:var(--accent); }
+        .plugin-hero .subtitle {
+            font-family:var(--font-display); font-style:italic; font-size:clamp(1rem,2.2vw,1.3rem);
+            color:var(--cream-faint); margin-bottom:0.8rem;
+        }
+        .plugin-hero .plugin-type {
+            font-family:var(--font-mono); font-size:0.75rem; color:var(--gold-dim);
+            text-transform:uppercase; letter-spacing:0.15em;
+        }
+
+        /* CONTAINER */
+        .container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+        .section { padding:4rem 0; }
+
+        /* MODE TAGS */
+        .mode-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:0.4rem; margin-top:1.5rem; }
+        .mode-tag {
+            font-family:var(--font-mono); font-size:0.7rem; padding:0.3rem 0.7rem;
+            background:var(--bg-strip); border:1px solid var(--border-accent); border-radius:3px; color:var(--cream-faint);
+        }
+
+        /* DESCRIPTION */
+        .description {
+            max-width:800px; margin:0 auto; padding:3rem 0;
+            font-size:1.05rem; line-height:1.8;
+        }
+        .description p { margin-bottom:1.2rem; }
+        .description .highlight { color:var(--cream); font-weight:400; }
+
+        /* SCREENSHOTS */
+        .screenshots {
+            display:grid; grid-template-columns:1fr; gap:2rem;
+            padding:2rem 0 3rem;
+        }
+        .screenshot {
+            background:var(--bg-panel); border:1px solid var(--border-subtle); border-radius:6px;
+            overflow:hidden; transition:border-color 0.3s;
+        }
+        .screenshot:hover { border-color:var(--border-accent); }
+        .screenshot img { width:100%; display:block; }
+        .screenshot figcaption {
+            font-family:var(--font-mono); font-size:0.72rem; color:var(--cream-faint);
+            padding:0.8rem 1.2rem; text-align:center; letter-spacing:0.05em;
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:1.2rem;
+            padding:2rem 0;
+        }
+        .feature-card {
+            padding:1.5rem; background:var(--bg-panel); border:1px solid var(--border-subtle);
+            border-radius:4px;
+        }
+        .feature-card h3 {
+            font-family:var(--font-body); font-size:0.85rem; font-weight:600;
+            text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.6rem;
+        }
+        .feature-card p { font-size:0.9rem; line-height:1.6; }
+
+        /* SIGNAL FLOW */
+        .signal-flow {
+            background:var(--bg-panel); border:1px solid var(--border-subtle); border-radius:4px;
+            padding:1.5rem 2rem; margin:2rem 0; text-align:center;
+        }
+        .signal-flow h3 {
+            font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase;
+            letter-spacing:0.15em; color:var(--gold-dim); margin-bottom:1rem;
+        }
+        .signal-chain { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:0.4rem; }
+        .signal-stage {
+            font-family:var(--font-mono); font-size:0.7rem; padding:0.4rem 0.7rem;
+            background:var(--bg-strip); border:1px solid var(--border-accent); border-radius:3px;
+            color:var(--cream-dim); white-space:nowrap;
+        }
+        .signal-arrow { color:var(--gold-dim); font-size:0.7rem; }
+
+        /* DIVIDER */
+        .section-divider { width:60px; height:1px; background:var(--gold-dim); margin:0 auto 2rem; }
+
+        /* FOOTER */
+        footer { padding:4rem 0 2.5rem; text-align:center; border-top:1px solid var(--border-subtle); }
+        .footer-brand { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cream-faint); margin-bottom:0.6rem; }
+        .footer-email { font-family:var(--font-mono); font-size:0.78rem; color:var(--cream-faint); margin-bottom:1.2rem; }
+        .footer-email a { color:var(--gold-dim); }
+        .footer-links { display:flex; justify-content:center; gap:2rem; margin-bottom:2rem; }
+        .footer-links a { font-size:0.82rem; color:var(--cream-faint); }
+        .footer-legal { font-size:0.72rem; color:var(--cream-faint); opacity:0.5; }
+
+        /* RESPONSIVE */
+        @media (max-width:640px) {
+            .container { padding:0 1.25rem; }
+            .section { padding:3rem 0; }
+            .features-grid { grid-template-columns:1fr; }
+            .signal-chain { flex-direction:column; }
+            .signal-arrow { transform:rotate(90deg); }
+        }
+    </style>
 </head>
 <body>
-    <nav id="nav">
+    <nav>
         <div class="container">
-            <a href="../index.html" class="nav-logo">
+            <a href="../" class="nav-logo">
                 <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
                 <span><span class="f">f</span>Box</span>
             </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html#vision">Vision</a></li>
-                <li><a href="../index.html#console">Console</a></li>
-                <li><a href="../index.html#workflow">Workflow</a></li>
-                <li><a href="../index.html#plugins">Plugins</a></li>
-            </ul>
-            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+            <a href="../" class="nav-back">&larr; Back to home</a>
         </div>
     </nav>
 
     <section class="plugin-hero">
         <div class="container">
-            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
-            <h1><span class='f'>f</span>Mod</h1>
-            <div class="plugin-type">Multi-Mode Modulation Processor - VST3 / AU</div>
-            <p class="plugin-tagline">Eight classic modulation circuits</p>
+            <h1><span class="f">f</span>Mod</h1>
+            <p class="subtitle">Multi-Mode Modulation</p>
+            <p class="plugin-type">Eight Modulation Modes - VST3</p>
+            <div class="mode-tags"><span class="mode-tag">Chorus</span><span class="mode-tag">Flanger</span><span class="mode-tag">Phaser</span><span class="mode-tag">Tremolo</span><span class="mode-tag">Vibrato</span><span class="mode-tag">Rotary</span><span class="mode-tag">Ring Mod</span><span class="mode-tag">Univibe</span></div>
         </div>
     </section>
-    <section class="plugin-body reveal">
-        
-    <h2>Overview</h2>
-    <p>fMod provides eight modulation engines covering every classic modulation effect - from lush bucket-brigade chorus to through-zero flanging to dual-rotor Leslie emulation. Each mode has its own DSP engine, GUI layout, and per-instance hardware tolerances. Tempo sync is available on six modes.</p>
 
-    <h2>Modes</h2>
-    <div class="mode-grid">
-        <div class="mode-card"><h3>Chorus</h3><p>BBD bucket-brigade with compandor noise reduction. 1-3 voices with even phase spread.</p></div>
-        <div class="mode-card"><h3>Flanger</h3><p>Through-zero capable with signed feedback from -95% to +95%. Deep, metallic sweeps.</p></div>
-        <div class="mode-card"><h3>Phaser</h3><p>Cascaded all-pass with JFET sweep. 4, 6, 8, or 12 stages.</p></div>
-        <div class="mode-card"><h3>Tremolo</h3><p>Bias tube and optical photocell sub-modes. Stereo width control and sidechain input.</p></div>
-        <div class="mode-card"><h3>Vibrato</h3><p>BBD pitch modulation with rise envelope and latch for mechanical pitch effects.</p></div>
-        <div class="mode-card"><h3>Rotary</h3><p>Dual-rotor Leslie with independent horn and drum speeds, Doppler effect, and cabinet EQ.</p></div>
-        <div class="mode-card"><h3>Ring Mod</h3><p>4-diode germanium ring modulator with polyBLEP carrier. Sidechain replaces carrier.</p></div>
-        <div class="mode-card"><h3>Univibe</h3><p>Photocell 4-stage phaser with incandescent lamp model and transistor drive.</p></div>
-    </div>
+    <section class="section">
+        <div class="container">
+            <div class="description">
+                
+        <p>fMod is a multi-mode modulation plugin that recreates eight classic analogue modulation effects in a single interface. Each instance receives a unique serial number that seeds subtle per-unit hardware tolerances, just like pulling different units off a production line.</p>
+        <p>The eight modes are complete, dedicated DSP engines - not simplified presets of a generic architecture. <span class="highlight">Chorus uses multi-voice BBD delay lines. Flanger uses through-zero capable delay with resonant feedback. Phaser uses cascaded allpass stages. Rotary models dual horn and drum rotors with crossover and cabinet simulation.</span></p>
+        <p>Each mode exposes its own set of controls matching what the real hardware offers. All share common Input, Bypass, Output, Mix, and Sync controls. Mode-specific controls include Rate, Depth, Feedback, Voices, Tone, Rise, Drive, Stages, and more depending on the effect.</p>
+        <p>ADAA antialiasing is active at all quality tiers for saturation stages. Tempo sync is available on all modes.</p>
+    
+            </div>
 
-    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+            
+        <div class="signal-flow">
+            <h3>Signal Flow (All Modes)</h3>
+            <div class="signal-chain">
+                <span class="signal-stage">Input Trim</span><span class="signal-arrow">&rarr;</span>
+                <span class="signal-stage">Mode Engine</span><span class="signal-arrow">&rarr;</span>
+                <span class="signal-stage">DC Block</span><span class="signal-arrow">&rarr;</span>
+                <span class="signal-stage">Dry/Wet Mix</span><span class="signal-arrow">&rarr;</span>
+                <span class="signal-stage">Noise Floor</span><span class="signal-arrow">&rarr;</span>
+                <span class="signal-stage">Output Trim</span><span class="signal-arrow">&rarr;</span>
+                <span class="signal-stage">Safety Limiter</span>
+            </div>
+        </div>
+    
 
+            <div class="screenshots">
+                
+            <figure class="screenshot">
+                <img src="../assets/screenshots/fmod_chorus.png" alt="fMod - Chorus mode with Voices, Feedback, and Tone" loading="lazy">
+                <figcaption>fMod - Chorus mode with Voices, Feedback, and Tone</figcaption>
+            </figure>
+            <figure class="screenshot">
+                <img src="../assets/screenshots/fmod_vibrato.png" alt="fMod - Vibrato mode with Rise and Depth" loading="lazy">
+                <figcaption>fMod - Vibrato mode with Rise and Depth</figcaption>
+            </figure>
+            </div>
+
+            
+        <div class="section-divider"></div>
+        <div class="features-grid">
+            <div class="feature-card"><h3>Chorus</h3><p>Multi-voice BBD ensemble with up to 6 voices, feedback, and tone shaping. Instant thickening from subtle doubling to rich ensemble.</p></div>
+            <div class="feature-card"><h3>Flanger & Phaser</h3><p>Through-zero flanging with resonant feedback. Multi-stage phaser with selectable stage count for varied character.</p></div>
+            <div class="feature-card"><h3>Rotary & Univibe</h3><p>Dual-rotor Leslie emulation with horn/drum crossover and cabinet sim. Univibe with drive for saturated psychedelic tones.</p></div>
+            <div class="feature-card"><h3>Tremolo, Vibrato, Ring Mod</h3><p>Bias and optical tremolo modes. Vibrato with gradual onset Rise control. Ring modulator for metallic, atonal textures.</p></div>
+        </div>
+    
+        </div>
     </section>
 
     <footer>
-        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
         <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
-        <p class="footer-location">From the Outer Hebrides of Scotland</p>
-        <div class="footer-links"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a><a href="../index.html">Back to home</a></div>
+        <p class="footer-email"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a></p>
+        <div class="footer-links">
+            <a href="../">Back to home</a>
+            <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly.com</a>
+        </div>
         <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
     </footer>
-    <script>
-        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
-        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
-        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
-        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    </script>
 </body>
 </html>
