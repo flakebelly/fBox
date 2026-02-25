@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fBox Console - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Box Console</h1>
+            <div class="plugin-type">32-Channel Mixing Console - VST3 / AU / Standalone</div>
+            <p class="plugin-tagline">A complete virtual analogue mixing desk</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fBox Console is a 32-channel virtual analogue mixing desk. It runs as a VST3 or AU plugin inside your DAW, or as a standalone application. 32 mono channel strips, 8 group buses, 2 stereo aux sends with returns, and a stereo master section - all with analogue-style non-linear summing and per-instance hardware character.</p>
+    <p>It is not a collection of unrelated processors. It is one integrated desk where levels, routing, and gain staging are part of the sound. The console's non-linear summing stages respond to the combined energy of all channels feeding a bus, exactly as a real analogue summing amplifier does.</p>
+
+    <h2>Channel Strip</h2>
+    <p>Every channel includes a switchable preamp (Clean, Warm, Hot, Valve), 8 hosted insert slots for fBox plugins, a single-knob opto channel compressor with programme-dependent attack and release, a 4-band vintage-style EQ (high-pass filter, low bell, mid bell, high shelf - all stepped frequencies), 2 aux sends with pre/post switching, pan, mute, solo, and a fader. The preamp is signal-level driven - there is no drive knob. Push the trim harder and the preamp saturates more, just like real hardware.</p>
+
+    <h2>Bus and Master</h2>
+    <p>The 8 group buses each have a 3-band EQ with high-pass filter, a VCA bus compressor with parallel mix, 4 insert slots, and dual pan controls. The master section adds an analogue-style summing amplifier, a 3-band EQ, a vari-mu compressor with gain reduction metering, and a diode limiter.</p>
+
+    <h2>Automation Pass System</h2>
+    <p>The console has its own built-in automation engine, completely independent of your DAW's automation. Create unlimited passes and layer them on top of each other. Record fader rides, knob turns, EQ moves, mute presses - every parameter on every channel, bus, and the master section. Each pass is independent: maybe Pass 1 is your fader balance, Pass 2 is EQ tweaks, Pass 3 is panning, Pass 4 is effects sends. Lock the ones you are happy with. Build the mix up over time, exactly like working on a real console.</p>
+    <p>The system also records every parameter on every hosted insert plugin. Grab a knob on fComp in an insert slot while a pass is recording and the move is captured. Automation never fights you - grab any control during playback and your live movement takes priority until you release it.</p>
+
+    <div class="signal-flow-box">
+        <h3>Channel Signal Flow</h3>
+        <div class="signal-chain">
+            <span class="signal-stage">Trim</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">Preamp</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">8x Inserts</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">Comp</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">4-Band EQ</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">Aux Sends</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">Fader</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">Pan</span><span class="signal-arrow">&rarr;</span>
+            <span class="signal-stage">Bus / Master</span>
+        </div>
+    </div>
+
+    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>

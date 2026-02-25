@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fTape - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Tape</h1>
+            <div class="plugin-type">Multi-Mode Tape Machine - VST3 / AU</div>
+            <p class="plugin-tagline">Six tape machines spanning the full history of magnetic recording</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fTape emulates six distinct tape machines, each with its own transport characteristics, frequency response, saturation behaviour, and noise profile. The reel animation is driven by the DAW playhead - press play and the reels turn, stop and they stop. Each mode models the complete analogue tape recording chain including frequency-dependent saturation, bias, noise, and mechanical character.</p>
+
+    <h2>Modes</h2>
+    <div class="mode-grid">
+        <div class="mode-card"><h3>Home Deck</h3><p>Quarter-inch reel-to-reel at 3.75 or 7.5 IPS. Warm, lo-fi, characterful.</p></div>
+        <div class="mode-card"><h3>Cassette</h3><p>Compact cassette with switchable tape types, Dolby noise reduction, and varispeed pitch.</p></div>
+        <div class="mode-card"><h3>Multitrack</h3><p>8-track quarter-inch at 15 IPS with dbx noise reduction, crosstalk, and print-through.</p></div>
+        <div class="mode-card"><h3>Broadcast</h3><p>Semi-pro broadcast 1-inch stereo deck. 7.5 or 15 IPS, NAB/IEC EQ, three-head design.</p></div>
+        <div class="mode-card"><h3>Studio 2"</h3><p>High-end 2-inch 24-track. 15 or 30 IPS, NAB/CCIR EQ, transformer electronics.</p></div>
+        <div class="mode-card"><h3>Heritage</h3><p>Vintage 4-track 1-inch studio deck. IEC EQ, 4-head with sel-sync, permalloy heads.</p></div>
+    </div>
+
+    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>

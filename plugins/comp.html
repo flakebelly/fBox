@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fComp - fBox Virtual Analogue Studio</title>
+    <link rel="icon" type="image/png" href="../assets/fbox_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/fbox_logo.png" alt="fBox" loading="lazy">
+                <span><span class="f">f</span>Box</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#vision">Vision</a></li>
+                <li><a href="../index.html#console">Console</a></li>
+                <li><a href="../index.html#workflow">Workflow</a></li>
+                <li><a href="../index.html#plugins">Plugins</a></li>
+            </ul>
+            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="plugin-hero">
+        <div class="container">
+            <a href="../index.html#plugins" class="back-link">&larr; All Plugins</a>
+            <h1><span class='f'>f</span>Comp</h1>
+            <div class="plugin-type">Multi-Mode Compressor - VST3 / AU</div>
+            <p class="plugin-tagline">Nine compression engines in one plugin</p>
+        </div>
+    </section>
+    <section class="plugin-body reveal">
+        
+    <h2>Overview</h2>
+    <p>fComp puts nine distinct compression engines in a single plugin. Each mode has its own DSP engine, its own GUI, and its own sonic character. Switch between them with a single dropdown - from fast FET peak limiting to smooth optical levelling to transparent VCA bus glue to vintage variable-mu warmth.</p>
+
+    <h2>Modes</h2>
+    <div class="mode-grid">
+        <div class="mode-card"><h3>FET</h3><p>Fast-attack FET peak limiter. Aggressive, punchy, and immediate.</p></div>
+        <div class="mode-card"><h3>Opto</h3><p>Photocell-based optical compressor. Smooth, musical, programme-dependent timing.</p></div>
+        <div class="mode-card"><h3>VCA</h3><p>VCA bus compressor. Clean, precise, transparent glue for buses and mix.</p></div>
+        <div class="mode-card"><h3>Vari-Mu</h3><p>Variable-mu tube compressor. Warm, thick, feedback topology with gentle ratio curves.</p></div>
+        <div class="mode-card"><h3>PWN</h3><p>Pulse width modulation broadcast compressor. Dense, loud, broadcast-ready.</p></div>
+        <div class="mode-card"><h3>Diode Bridge</h3><p>Germanium diode bridge compressor. Gritty, colourful, feedback topology.</p></div>
+        <div class="mode-card"><h3>De-Esser</h3><p>Frequency-selective dynamics. Tames sibilance without dulling the source.</p></div>
+        <div class="mode-card"><h3>Zener</h3><p>Zener diode limiter. Three sub-modes for brickwall, soft, and character limiting.</p></div>
+        <div class="mode-card"><h3>Gate</h3><p>VCA noise gate, expander, and ducker. Three sub-modes for flexible dynamics control.</p></div>
+    </div>
+
+    <div class="plugin-placeholder"><p>Screenshots and signal flow diagrams coming soon</p></div>
+
+    </section>
+
+    <footer>
+        <img src="../assets/fbox_logo.png" alt="fBox" class="footer-logo">
+        <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
+        <p class="footer-location">From the Outer Hebrides of Scotland</p>
+        <div class="footer-links"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a><a href="../index.html">Back to home</a></div>
+        <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
+    </footer>
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
+        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
+        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    </script>
+</body>
+</html>
