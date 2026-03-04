@@ -1,176 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fBox - Virtual Analogue Studio</title>
-    <meta name="description" content="fBox is a virtual analogue studio ecosystem by flakebelly. A complete professional recording studio in software.">
-    <link rel="icon" type="image/png" href="assets/fbox_logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fBox — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    background: #0E0E0E;
+    color: #B8AE9A;
+    font-family: Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  .logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 18px;
+    margin-bottom: 2rem;
+  }
+  .overline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #9A7E4E;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
+    color: #F0E4CF;
+    letter-spacing: .04em;
+    margin-bottom: .2em;
+  }
+  h1 .f { color: #C4A265; }
+  .tagline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #8A8276;
+    margin-bottom: 2.5rem;
+  }
+  .body-text {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .82rem;
+    letter-spacing: .08em;
+    color: #C4A265;
+    text-decoration: none;
+  }
+  .contact:hover { color: #D4B87A; }
+  footer {
+    margin-top: 4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    color: #8A8276;
+    opacity: .5;
+  }
+</style>
 </head>
 <body>
-    <nav id="nav">
-        <div class="container">
-            <a href="index.html" class="nav-logo">
-                <img src="assets/fbox_logo.png" alt="fBox" loading="lazy">
-                <span><span class="f">f</span>Box</span>
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#vision">Vision</a></li>
-                <li><a href="#console">Console</a></li>
-                <li><a href="#workflow">Workflow</a></li>
-                <li><a href="#plugins">Plugins</a></li>
-            </ul>
-            <div class="nav-mobile-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
-
-    <section class="hero" id="top">
-        <div class="hero-content">
-            <img src="assets/fbox_logo.png" alt="fBox Logo" class="hero-logo">
-            <h1><span class="f">f</span>Box</h1>
-            <p class="hero-subtitle">Virtual Analogue Studio</p>
-            <p class="hero-tagline">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></p>
-        </div>
-        <div class="hero-scroll-hint"><span></span></div>
-    </section>
-
-    <section class="section vision" id="vision">
-        <div class="container">
-            <div class="vision-grid">
-                <div class="vision-text reveal">
-                    <h2>Not a collection of plugins.<br>A virtual studio.</h2>
-                    <p>fBox recreates an entire professional recording studio in software - mixing console, outboard processors, and tape machines - all interconnected, all sharing the same analogue modelling DNA and <span class="highlight">vintage British hardware aesthetic</span>.</p>
-                    <p>The centrepiece is a 32-channel mixing console with a built-in automation pass system and an integrated 16-track tape machine. Route your audio, gain-stage, EQ, compress, send to shared effects, bus, and master - exactly as you would on a real analogue desk.</p>
-                    <p>Every instance of every fBox plugin generates a unique serial number that seeds subtle hardware tolerances across its components. <span class="highlight">No two instances sound identical, just like no two pieces of real hardware off the same production line.</span></p>
-                </div>
-                <div class="vision-features reveal">
-                    <div class="vision-feature">
-                        <div class="vision-feature-icon">&#9674;</div>
-                        <div>
-                            <h4>No Two Sound Alike</h4>
-                            <p>Every plugin instance gets a unique serial number seeding real component tolerances. Load two instances of the same plugin and they will have subtly different character - just like real hardware.</p>
-                        </div>
-                    </div>
-                    <div class="vision-feature">
-                        <div class="vision-feature-icon">&#9674;</div>
-                        <div>
-                            <h4>Multi-Mode Architecture</h4>
-                            <p>One plugin, multiple personalities. A mode switch changes both the DSP engine and the visual appearance. One insert slot, many compressors - or EQs, or tape machines.</p>
-                        </div>
-                    </div>
-                    <div class="vision-feature">
-                        <div class="vision-feature-icon">&#9674;</div>
-                        <div>
-                            <h4>VST3 and AU</h4>
-                            <p>All fBox plugins are available as VST3 for Windows and AU for Mac.</p>
-                        </div>
-                    </div>
-                    <div class="vision-feature">
-                        <div class="vision-feature-icon">&#9674;</div>
-                        <div>
-                            <h4>Three Quality Tiers</h4>
-                            <p>Eco for tracking, Studio for mixing, Master for final prints. Anti-aliasing and oversampling scale to match the task and your CPU.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section console-section" id="console">
-        <div class="container">
-            <div class="section-divider"></div>
-            <h2 class="reveal">The Console</h2>
-            <p class="subtitle reveal">32-channel virtual analogue mixing desk</p>
-            <div class="console-specs reveal">
-                <div class="console-spec"><div class="number">32</div><div class="label">Channel Strips</div></div>
-                <div class="console-spec"><div class="number">8</div><div class="label">Group Buses</div></div>
-                <div class="console-spec"><div class="number">&#8734;</div><div class="label">Automation Passes</div></div>
-                <div class="console-spec"><div class="number">8</div><div class="label">Inserts Per Channel</div></div>
-            </div>
-            <div class="console-description reveal">
-                <p>fBox Console is a complete virtual analogue mixing desk that runs as a VST3 or AU plugin inside your DAW, or as a standalone application. It provides 32 mono channel strips, 8 group buses, 2 stereo aux sends with returns, and a stereo master section. It is not a collection of unrelated processors - it is one integrated desk where levels, routing, and gain staging are part of the sound.</p>
-                <p>Every channel strip includes a switchable preamp with four modes, 8 hosted insert slots for fBox plugins, a single-knob opto channel compressor, a 4-band vintage EQ, 2 aux sends, pan, mute, solo, and a fader. The 8 group buses each have their own 3-band EQ, VCA bus compressor, and insert slots. The master section adds an analogue-style summing amplifier, a vari-mu compressor, and a diode limiter.</p>
-                <p>The console has its own built-in automation pass system, completely independent of your DAW's automation lanes. Record fader rides, knob turns, mute presses - every parameter on every channel, bus, and the master section - and play them back automatically. Create as many passes as you like and layer them on top of each other: Pass 1 might be your fader balance, Pass 2 your EQ tweaks, Pass 3 your panning moves. Each pass is independent. Lock the ones you are happy with. Build your mix up over time, exactly like working on a real console with an assistant at the tape machine. The system also records every parameter on every hosted insert plugin - grab a knob on fComp in an insert slot and the move writes to the active pass. Automation never fights you: grab any control during playback and your live movement takes priority until you release it.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="section workflow-section" id="workflow">
-        <div class="container">
-            <div class="section-divider"></div>
-            <h2 class="reveal">Use It Your Way</h2>
-            <p class="subtitle reveal">From simple summing to the full classic console experience</p>
-            <div class="workflow-grid reveal">
-                <div class="workflow-card">
-                    <h3>Analogue-Style Summing</h3>
-                    <p>Route your DAW tracks into the console and use nothing but the faders and the non-linear summing stages. The bus summing and master section add depth and cohesion to your mix with zero configuration.</p>
-                </div>
-                <div class="workflow-card">
-                    <h3>Mix Through It</h3>
-                    <p>Use the channel EQ, compressor, preamp modes, and aux sends to shape your mix entirely inside the console. Load fBox plugins into the insert slots for more processing. Keep your DAW mixer clean.</p>
-                </div>
-                <div class="workflow-card">
-                    <h3>Classic Console Workflow</h3>
-                    <p>Work the way engineers mixed on real analogue desks. Record automation passes one at a time - fader balance first, then EQ, then panning, then effects sends. Layer unlimited passes. Lock the ones you are happy with. Build the mix over time.</p>
-                </div>
-                <div class="workflow-card">
-                    <h3>Hybrid Workflow</h3>
-                    <p>Use your DAW's automation for some things and the console's pass system for others. The two systems run side by side. Use the console for the hands-on performance of a fader ride, and the DAW for precise surgical edits.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section plugins-section" id="plugins">
-        <div class="container">
-            <div class="section-divider"></div>
-            <h2 class="reveal">The Plugin Suite</h2>
-            <p class="subtitle reveal">Every processor you need, from one ecosystem</p>
-            <div class="plugin-grid">
-                <a href="plugins/console.html" class="plugin-card reveal" style="--card-accent:var(--gold)"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Box Console</span></div><div class="plugin-card-type">32-ch Mixing Console - VST3 / AU / Standalone</div><p class="plugin-card-description">Full analogue mixing desk with channel preamps, insert hosting, compressors, vintage EQ, aux sends, 8 group buses, and stereo master. Built-in automation pass system with unlimited layered passes.</p><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/rack.html" class="plugin-card reveal" style="--card-accent:var(--gold-dim)"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Box Rack</span></div><div class="plugin-card-type">Modular Insert Chain - VST3 / AU</div><p class="plugin-card-description">Hosts up to 8 VST3 plugins of any kind in series, with built-in preamp, console output stage, and mix bus strip. A complete channel in a single plugin.</p><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/comp.html" class="plugin-card reveal" style="--card-accent:var(--red-mute)"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Comp</span></div><div class="plugin-card-type">Multi-Mode Compressor - VST3 / AU</div><p class="plugin-card-description">Nine compression engines in one plugin. Each mode has its own DSP engine, GUI skin, and character.</p><div class="plugin-modes"><span class="mode-tag">FET</span><span class="mode-tag">Opto</span><span class="mode-tag">VCA</span><span class="mode-tag">Vari-Mu</span><span class="mode-tag">PWN</span><span class="mode-tag">Diode Bridge</span><span class="mode-tag">De-Esser</span><span class="mode-tag">Zener</span><span class="mode-tag">Gate</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/eq.html" class="plugin-card reveal" style="--card-accent:#6A9EC4"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>EQ</span></div><div class="plugin-card-type">Multi-Mode Equaliser - VST3 / AU</div><p class="plugin-card-description">Six EQ personalities covering every equalisation task - from surgical precision to musical programme shaping to vintage inductor warmth.</p><div class="plugin-modes"><span class="mode-tag">Hybrid</span><span class="mode-tag">Passive</span><span class="mode-tag">Air</span><span class="mode-tag">Desk</span><span class="mode-tag">Surgical</span><span class="mode-tag">Bus</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/tape.html" class="plugin-card reveal" style="--card-accent:var(--amber-solo)"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Tape</span></div><div class="plugin-card-type">Multi-Mode Tape Machine - VST3 / AU</div><p class="plugin-card-description">Six tape machine emulations spanning the full history of magnetic recording - from home reel-to-reel warmth to 2-inch studio saturation.</p><div class="plugin-modes"><span class="mode-tag">Home Deck</span><span class="mode-tag">Cassette</span><span class="mode-tag">Multitrack</span><span class="mode-tag">Broadcast</span><span class="mode-tag">Studio 2"</span><span class="mode-tag">Heritage</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/mod.html" class="plugin-card reveal" style="--card-accent:#C4A265"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Mod</span></div><div class="plugin-card-type">Multi-Mode Modulation - VST3 / AU</div><p class="plugin-card-description">Eight classic modulation circuits - from lush BBD chorus and through-zero flanging to dual-rotor Leslie emulation and germanium ring modulation.</p><div class="plugin-modes"><span class="mode-tag">Chorus</span><span class="mode-tag">Flanger</span><span class="mode-tag">Phaser</span><span class="mode-tag">Tremolo</span><span class="mode-tag">Vibrato</span><span class="mode-tag">Rotary</span><span class="mode-tag">Ring Mod</span><span class="mode-tag">Univibe</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/pre.html" class="plugin-card reveal" style="--card-accent:#8AC46A"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Pre</span></div><div class="plugin-card-type">Multi-Mode Preamplifier - VST3 / AU</div><p class="plugin-card-description">Six preamplifier topologies - Class-A transformer, FET solid-state, all-tube pentode, transparent discrete, PNP germanium, and IC op-amp console strip.</p><div class="plugin-modes"><span class="mode-tag">British</span><span class="mode-tag">American</span><span class="mode-tag">Tube</span><span class="mode-tag">Clean</span><span class="mode-tag">Germanium</span><span class="mode-tag">Console</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/sat.html" class="plugin-card reveal" style="--card-accent:#B87333"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Sat</span></div><div class="plugin-card-type">Multi-Mode Saturation - VST3 / AU</div><p class="plugin-card-description">Eight saturation and harmonic generation engines - from gentle transformer iron warmth to aggressive fuzz.</p><div class="plugin-modes"><span class="mode-tag">Silk</span><span class="mode-tag">Glow</span><span class="mode-tag">Push</span><span class="mode-tag">Diode</span><span class="mode-tag">Clip</span><span class="mode-tag">Rect</span><span class="mode-tag">Crush</span><span class="mode-tag">Fuzz</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/verb.html" class="plugin-card reveal" style="--card-accent:#7A8EC4"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Verb</span></div><div class="plugin-card-type">Multi-Mode Reverb - VST3 / AU</div><p class="plugin-card-description">Eight reverb algorithms each with its own topology, character controls, and sidechain ducking.</p><div class="plugin-modes"><span class="mode-tag">Room</span><span class="mode-tag">Hall</span><span class="mode-tag">Plate</span><span class="mode-tag">Spring</span><span class="mode-tag">Chamber</span><span class="mode-tag">Shimmer</span><span class="mode-tag">Nonlinear</span><span class="mode-tag">Lo-Fi</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/drone.html" class="plugin-card reveal" style="--card-accent:#C47A8E"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Drone</span></div><div class="plugin-card-type">Drone Synthesiser and Signal Mangler - VST3 / AU</div><p class="plugin-card-description">Drone generator, audio processor, ring modulator, and MIDI instrument. Dual oscillators with layers, cross-modulation, a full damage and character chain, and tape emulation. Every instance is a unique piece of virtual hardware.</p><div class="plugin-modes"><span class="mode-tag">Drone</span><span class="mode-tag">Mix</span><span class="mode-tag">Ring</span><span class="mode-tag">MIDI Instrument</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-
-                <a href="plugins/delay.html" class="plugin-card reveal" style="--card-accent:#9A7EC4"><div class="plugin-card-header"><span class="plugin-name"><span class="f">f</span>Delay</span></div><div class="plugin-card-type">Multi-Mode Delay - VST3 / AU</div><p class="plugin-card-description">Eight delay modes covering tape echo, digital, analogue bucket-brigade, ping-pong, and more. Switchable GUI per mode.</p><div class="plugin-modes"><span class="mode-tag">Tape Echo</span><span class="mode-tag">Tape Loop</span><span class="mode-tag">BBD</span><span class="mode-tag">Digital</span><span class="mode-tag">Oil Can</span><span class="mode-tag">Lo-Fi</span><span class="mode-tag">Multi-Tap</span><span class="mode-tag">Ping Pong</span></div><div class="plugin-card-arrow">View details &rarr;</div></a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <img src="assets/fbox_logo.png" alt="fBox" class="footer-logo">
-        <div class="footer-brand">made by <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a></div>
-        <p class="footer-location">From the Outer Hebrides of Scotland</p>
-        <div class="footer-links"><a href="mailto:info@fboxaudio.com">info@fboxaudio.com</a><a href="#top">Back to top</a></div>
-        <p class="footer-legal">&copy; 2025 <a href="https://flakebelly.com" target="_blank" rel="noopener">flakebelly</a>. All rights reserved. VST is a trademark of Steinberg Media Technologies GmbH.</p>
-    </footer>
-    <script>
-        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
-        document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
-        document.querySelectorAll('.nav-links a').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')})});
-        const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    </script>
+  <img src="fbox_logo.png" alt="fBox" class="logo">
+  <p class="overline">Virtual Analogue Studio Ecosystem</p>
+  <h1><span class="f">f</span>Box</h1>
+  <p class="tagline">VST3 Plugins &amp; Console Environment</p>
+  <p class="body-text">Official launch coming soon.</p>
+  <a href="mailto:fboxaudio@gmail.com" class="contact">fboxaudio@gmail.com</a>
+  <footer>&copy; 2026 fBox. All rights reserved.</footer>
 </body>
 </html>
